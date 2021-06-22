@@ -1,5 +1,7 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:thirty_widgets/widgets/alert.dart';
+import 'package:thirty_widgets/widgets/animatedtext.dart';
 import 'package:thirty_widgets/widgets/bottomnav.dart';
 import 'package:thirty_widgets/widgets/dismissible.dart';
 import 'package:thirty_widgets/widgets/drawer.dart';
@@ -24,6 +26,6 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           primarySwatch: Colors.purple,
         ),
-        home: RowsCols());
+        home: AnimatedTextWidget());
   }
 }
