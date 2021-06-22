@@ -137,6 +137,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
+  motion_tab_bar:
+    dependency: "direct main"
+    description:
+      name: motion_tab_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.5"
   octo_image:
     dependency: transitive
     description:

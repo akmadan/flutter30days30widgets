@@ -16,9 +16,11 @@ class _Tabbar_WidgetState extends State<Tabbar_Widget> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
+          actions: [],
           backgroundColor: Colors.green.shade900,
           title: const Text('WhatsApp'),
           bottom: const TabBar(
+            indicatorColor: Colors.white,
             tabs: <Widget>[
               Tab(
                 text: 'CHATS',
