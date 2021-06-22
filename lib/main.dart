@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:thirty_widgets/widgets/alert.dart';
 import 'package:thirty_widgets/widgets/dismissible.dart';
-import 'package:thirty_widgets/widgets/draggable.dart';
+import 'package:thirty_widgets/widgets/drawer.dart';
 import 'package:thirty_widgets/widgets/dropdownlist.dart';
+import 'package:thirty_widgets/widgets/form.dart';
+import 'package:thirty_widgets/widgets/image.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,6 +21,6 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           primarySwatch: Colors.purple,
         ),
-        home: Dropdown_Widget());
+        home: AlertWidget());
   }
 }
