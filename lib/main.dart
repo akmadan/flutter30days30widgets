@@ -6,6 +6,7 @@ import 'package:thirty_widgets/widgets/drawer.dart';
 import 'package:thirty_widgets/widgets/dropdownlist.dart';
 import 'package:thirty_widgets/widgets/form.dart';
 import 'package:thirty_widgets/widgets/image.dart';
+import 'package:thirty_widgets/widgets/rowscols.dart';
 import 'package:thirty_widgets/widgets/tabbar.dart';
 
 void main() {
@@ -23,6 +24,6 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           primarySwatch: Colors.purple,
         ),
-        home: BottomWidget());
+        home: RowsCols());
   }
 }
