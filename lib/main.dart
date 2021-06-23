@@ -4,6 +4,7 @@ import 'package:thirty_widgets/widgets/alert.dart';
 import 'package:thirty_widgets/widgets/animatedtext.dart';
 import 'package:thirty_widgets/widgets/bottomnav.dart';
 import 'package:thirty_widgets/widgets/bottomsheet.dart';
+import 'package:thirty_widgets/widgets/button.dart';
 import 'package:thirty_widgets/widgets/container_sized_padd.dart';
 import 'package:thirty_widgets/widgets/dismissible.dart';
 import 'package:thirty_widgets/widgets/drawer.dart';
@@ -30,6 +31,6 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           primarySwatch: Colors.purple,
         ),
-        home: Container_Sized_Padd());
+        home: ButtonWidget());
   }
 }
