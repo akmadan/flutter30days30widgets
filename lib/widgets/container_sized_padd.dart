@@ -6,41 +6,32 @@ class Container_Sized extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: // SizedBox(
-            //   height: 50,
-            //   width: 50,
-            // ),
-            Container(
-          color: Colors.yellow,
-          child: Container(
-            // margin: EdgeInsets.all(10),
-            height: 100,
-            width: 100,
-            padding: EdgeInsets.all(10),
-            child: Center(child: Text('Hello Great world ')),
-            decoration: BoxDecoration(
-                // image: DecorationImage(),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 10,
-                      color: Colors.grey.shade900,
-                      spreadRadius: 10,
-                      offset: Offset(10, 5)),
-                ],
-                border: Border.all(
-                  color: Colors.white,
-                  width: 3,
-                ),
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(20)),
-          ),
+        appBar: AppBar(
+          // backgroundColor: Colors.black,
+          title: Text('Container and SizedBox'),
         ),
-        //         Padding(
-        //   padding: EdgeInsets.all(10),
-        //   child: Container(color: Colors.red),
-        // )
-      ),
-    );
+        body: Center(
+          child: Container(
+              height: 100,
+              width: 100,
+              decoration: BoxDecoration(
+                  color: Colors.blue,
+                  // shape: BoxShape.circle,
+                  // borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20)),
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 20, spreadRadius: 5, color: Colors.black)
+                  ]),
+              child: Center(
+                  child:
+                      Container(margin: EdgeInsets.all(10), color: Colors.red)
+                  // Text('Hello', style: TextStyle(fontSize: 20))
+                  )),
+        )
+        // SizedBox(height: 100, width: 50, child: Text('Hello')),
+        );
   }
 }
