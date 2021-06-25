@@ -6,36 +6,40 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Buttons')),
+      appBar: AppBar(
+        title: Text('Button'),
+      ),
       body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Container(
-            color: Colors.black,
-            child: TextButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.black),
-                  elevation: MaterialStateProperty.all(34),
-                  overlayColor: MaterialStateProperty.all(Colors.white),
-                ),
-                onPressed: () {},
-                child: Text(
-                  'Press',
-                  style: TextStyle(color: Colors.white),
-                )),
+          TextButton(
+            style: ButtonStyle(
+                padding: MaterialStateProperty.all(EdgeInsets.all(30)),
+                overlayColor: MaterialStateProperty.all(Colors.black),
+                elevation: MaterialStateProperty.all(20),
+                backgroundColor: MaterialStateProperty.all(Colors.yellow)),
+            child: Text(
+              'Press me',
+              style: TextStyle(fontSize: 20, color: Colors.black),
+            ),
+            onPressed: () {},
           ),
+          SizedBox(height: 20),
           Container(
-            padding: EdgeInsets.all(20),
-            width: double.infinity,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+            height: 50,
+            width: 300,
             child: ElevatedButton(
-              onPressed: () {},
-              child: Text('Sign in via Google'),
               style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Theme.of(context).primaryColor),
                   shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)))),
-              // style: ButtonStyle(
-
-              //     backgroundColor: MaterialStateProperty.all(Colors.black)),
+                      borderRadius: BorderRadius.circular(40)))),
+              onPressed: () {
+                print('Like');
+              },
+              child: Text(
+                'Press me',
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
             ),
           )
         ]),
