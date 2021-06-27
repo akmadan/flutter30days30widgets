@@ -8,107 +8,77 @@ class ListGrid extends StatefulWidget {
 }
 
 class _ListGridState extends State<ListGrid> {
-  List<String> names = ['Akshit', 'Karan', 'Gaurav', 'aasif'];
-
-  Map scores = {
-    'names': ['Akshit', 'Aasif', 'Gaurav', 'Karan'],
-    'marks': [56, 89, 43, 78]
+  List<String> fruits = ['Orange', 'Apple', 'Mango', 'Banana'];
+  Map fruits_person = {
+    'fruits': ['Orange', 'Apple', 'Mango', 'Banana'],
+    'names': ['Karan', 'Akshit', 'Gaurav', 'Aasif']
   };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('List Grid'),
+        title: Text('List and Grid'),
+        backgroundColor: Colors.red,
+        elevation: 0,
       ),
       body: Container(
-          child:
-              //     ListView(
-                // axis
-              //   children: [
-              //     ListTile(
-              //       leading: Icon(Icons.person),
-              //       title: Text('Akshit'),
-              //     ),
-              //     ListTile(
-              //       leading: Icon(Icons.person),
-              //       title: Text('Akshit'),
-              //     ),
-              //     ListTile(
-              //       leading: Icon(Icons.person),
-              //       title: Text('Akshit'),
-              //     ),
-              //     ListTile(
-              //       leading: Icon(Icons.person),
-              //       title: Text('Akshit'),
-              //     ),
-              //   ],
-              // )
-
-              //         ListView.builder(
-              //   itemCount: scores['names'].length,
-              //   itemBuilder: (context, index) {
-              //     return ListTile(
-              //       leading: Icon(Icons.person),
-              //       title: Text(scores['names'][index]),
-              //       subtitle: Text(scores['marks'][index].toString()),
-              //     );
-              //   },
-              // ),
-
-              //         GridView(
-              //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              //       crossAxisCount: 3,
-              //       crossAxisSpacing: 5,
-              //       mainAxisSpacing: 5,
-              //       childAspectRatio: 2 / 3),
-              //   children: [
-              //     Container(
-              //       color: Colors.red,
-              //       height: 60,
-              //       width: 60,
-              //     ),
-              //     Container(
-              //       color: Colors.red,
-              //       height: 60,
-              //       width: 60,
-              //     ),
-              //     Container(
-              //       color: Colors.red,
-              //       height: 60,
-              //       width: 60,
-              //     ),
-              //     Container(
-              //       color: Colors.red,
-              //       height: 60,
-              //       width: 60,
-              //     ),
-              //     Container(
-              //       color: Colors.red,
-              //       height: 60,
-              //       width: 60,
-              //     ),
-              //     Container(
-              //       color: Colors.red,
-              //       height: 60,
-              //       width: 60,
-              //     ),
-              //     Container(
-              //       color: Colors.red,
-              //       height: 60,
-              //       width: 60,
-              //     ),
-              //   ],
-              // )
-
-              GridView.builder(
-                  itemCount: 50,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisSpacing: 5,
-                      mainAxisSpacing: 5,
-                      crossAxisCount: 3),
-                  itemBuilder: (context, index) {
-                    return Container(color: Colors.yellow);
-                  })),
+        // child: ListView.builder(
+        //   itemCount: fruits.length,
+        //   itemBuilder: (context, index) {
+        //     return Card(
+        //       child: ListTile(
+        //         onTap: () {
+        //           print((fruits_person['fruits'][index]));
+        //         },
+        //         leading: Icon(Icons.person),
+        //         title: Text(fruits_person['fruits'][index]),
+        //         subtitle: Text(fruits_person['names'][index]),
+        //       ),
+        //     );
+        //   },
+        // ),
+        // child: GridView(
+        //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        //       crossAxisCount: 3,
+        //       crossAxisSpacing: 20,
+        //       mainAxisSpacing: 20,
+        //       childAspectRatio: 2 / 3),
+        //   children: [
+        //     Card(
+        //       child: Center(child: Text('Orange')),
+        //     ),
+        //     Card(
+        //       child: Center(child: Text('Orange')),
+        //     ),
+        //     Card(
+        //       child: Center(child: Text('Orange')),
+        //     ),
+        //     Card(
+        //       child: Center(child: Text('Orange')),
+        //     ),
+        //     Card(
+        //       child: Center(child: Text('Orange')),
+        //     ),
+        //     Card(
+        //       child: Center(child: Text('Orange')),
+        //     ),
+        //     Card(
+        //       child: Center(child: Text('Orange')),
+        //     ),
+        //   ],
+        // ),
+        child: GridView.builder(
+            itemCount: fruits.length,
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+            itemBuilder: (context, index) {
+              return Card(
+                child: Center(
+                  child: Text(fruits[index]),
+                ),
+              );
+            }),
+      ),
     );
   }
 }
