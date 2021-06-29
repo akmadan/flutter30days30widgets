@@ -1,60 +1,48 @@
 import 'package:flutter/material.dart';
 
-class Dismissible_Widget extends StatefulWidget {
-  const Dismissible_Widget({Key? key}) : super(key: key);
+class DismissibleWidget extends StatefulWidget {
+  const DismissibleWidget({Key? key}) : super(key: key);
 
   @override
-  _Dismissible_WidgetState createState() => _Dismissible_WidgetState();
+  _DismissibleWidgetState createState() => _DismissibleWidgetState();
 }
 
-class _Dismissible_WidgetState extends State<Dismissible_Widget> {
-  @override
-  List<String> names = [
-    'Akshit',
-    'Karan',
-    'Gaurav',
-    'Aasif',
-    'Raj',
-    'Simran',
-    'Aditya'
-  ];
-
+class _DismissibleWidgetState extends State<DismissibleWidget> {
+  List<String> fruits = ['Orange', 'Apple', 'Mango', 'Grapes', 'Banana'];
   @override
   Widget build(BuildContext context) {
-    final title = 'My Friends';
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
+      appBar: AppBar(title: Text('Dismissible Package')),
       body: ListView.builder(
-        itemCount: names.length,
+        itemCount: fruits.length,
         itemBuilder: (context, index) {
-          final name = names[index];
+          final fruit = fruits[index];
           return Dismissible(
-            key: Key(name),
-            onDismissed: (direction) {
-              if (direction == DismissDirection.startToEnd) {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(names[index]),
-                  backgroundColor: Colors.red,
-                ));
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(names[index]),
-                  backgroundColor: Colors.green,
-                ));
-              }
-              setState(() {
-                names.removeAt(index);
-              });
-            },
-            background: Container(color: Colors.red),
-            child: ListTile(title: Text(names[index])),
-            secondaryBackground: Container(
-              color: Colors.green,
-            ),
-          );
+              onDismissed: (direction) {
+                if (direction == DismissDirection.startToEnd) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(fruits[index]),
+                    backgroundColor: Colors.red,
+                  ));
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(fruits[index]),
+                    backgroundColor: Colors.green,
+                  ));
+                }
+              },
+              key: Key(fruit),
+              background: Container(
+                color: Colors.red,
+              ),
+              secondaryBackground: Container(
+                color: Colors.green,
+              ),
+              child: Card(
+                child: ListTile(
+                  title: Text(fruits[index]),
+                ),
+              ));
         },
       ),
     );
