@@ -1,56 +1,40 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class ImageWidget extends StatefulWidget {
+class ImageWidget extends StatelessWidget {
   const ImageWidget({Key? key}) : super(key: key);
 
   @override
-  _ImageWidgetState createState() => _ImageWidgetState();
-}
-
-class _ImageWidgetState extends State<ImageWidget> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Image Widget')),
-        //supports images and gifs too
-        //Image.network, Image.asset, CachedNetworkImage
-        //Container decoration - borderRadius, shadow
-        //FadeInImage
-        body:
-            // Container(
-            //   padding: EdgeInsets.all(20),
-            //   child: Center(
-            //     child: Container(
-            //       height: 300,
-            //       decoration: BoxDecoration(
-            //           borderRadius: BorderRadius.circular(20),
-            //           image: DecorationImage(
-            //               image: NetworkImage(
-            //                 'https://cdn-japantimes.com/wp-content/uploads/2020/05/np_file_13590.jpeg',
-            //               ),
-            //               fit: BoxFit.cover),
-            //           boxShadow: [
-            //             BoxShadow(
-            //               blurRadius: 20,
-            //               spreadRadius: 5,
-            //               color: Colors.black,
-            //             )
-            //           ]),
-            //     ),
-            // ),
-            // ),
-            Stack(
-          children: <Widget>[
-            Center(child: CircularProgressIndicator()),
-            Center(
-              child: FadeInImage.assetNetwork(
-                placeholder: 'assets/download.png',
-                image:
-                    'https://cdn-japantimes.com/wp-content/uploads/2020/05/np_file_13590.jpeg',
+      appBar: AppBar(title: Text('Doraemon Image')),
+      body: Center(
+          child: Container(
+        height: 300,
+        width: 250,
+        decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(blurRadius: 10, color: Colors.black, spreadRadius: 5.0)
+            ],
+            image: DecorationImage(
+              image: NetworkImage(
+                'https://m.media-amazon.com/images/M/MV5BMGIzZmQ4YmUtZGQ4NC00OTkyLWE1MGUtMTQ3N2Y3N2E2NWEyXkEyXkFqcGdeQXVyODAzNzAwOTU@._V1_UY1200_CR85,0,630,1200_AL_.jpg',
               ),
+              fit: BoxFit.cover,
             ),
-          ],
-        ));
+            color: Colors.red,
+            borderRadius: BorderRadius.circular(20)),
+      )),
+    );
   }
 }
+
+
+
+
+// CachedNetworkImage(
+//           imageUrl:
+//               'https://variety.com/wp-content/uploads/2014/11/stand-by-me-doraemon.jpg?w=681&h=383&crop=1',
+//           placeholder: (context, url) =>
+//               Center(child: CircularProgressIndicator()),
+//           errorWidget: (context, url, error) => Icon(Icons.error),
+//         ),
