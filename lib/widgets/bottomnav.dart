@@ -1,69 +1,73 @@
 import 'package:flutter/material.dart';
+import 'package:thirty_widgets/widgets/alert.dart';
+import 'package:thirty_widgets/widgets/dismissible.dart';
+import 'package:thirty_widgets/widgets/rowscols.dart';
+import 'package:thirty_widgets/widgets/snackbar.dart';
 
-class BottomWidget extends StatefulWidget {
-  const BottomWidget({Key? key}) : super(key: key);
+class BottomNav extends StatefulWidget {
+  const BottomNav({Key? key}) : super(key: key);
 
   @override
-  _BottomWidgetState createState() => _BottomWidgetState();
+  _BottomNavState createState() => _BottomNavState();
 }
 
-class _BottomWidgetState extends State<BottomWidget> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Search',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Favourites',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Profile',
-      style: optionStyle,
-    ),
-  ];
+class _BottomNavState extends State<BottomNav> {
+  int selectedindex = 0;
+  PageController pageController = PageController();
 
-  void _onItemTapped(int index) {
+  // List<Widget> widgets = [
+  //   Text('Home'),
+  //   Text('Search'),
+  //   Text('Add'),
+  //   Text('Profile'),
+  // ];
+  void onTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      selectedindex = index;
     });
+    pageController.jumpToPage(index);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Bottom Bar')),
+      // appBar: AppBar(title: Text('Bottom Nav')),
+      body: PageView(
+        controller: pageController,
+        children: [
+          ALertWidget(),
+          DismissibleWidget(),
+          RowsCols(),
+          SnackbarWidget()
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.transparent,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
+              icon: Icon(
+                Icons.home,
+              ),
+              label: 'Home'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Search',
-          ),
+              icon: Icon(
+                Icons.search,
+              ),
+              label: 'Search'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Favourites',
-          ),
+              icon: Icon(
+                Icons.add,
+              ),
+              label: 'Add'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Profile',
-          ),
+              icon: Icon(
+                Icons.person,
+              ),
+              label: 'Profile'),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        unselectedItemColor: Colors.white,
-        onTap: _onItemTapped,
+        currentIndex: selectedindex,
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.grey,
+        onTap: onTapped,
       ),
     );
   }
