@@ -1,29 +1,31 @@
 import 'package:flutter/material.dart';
 
-class Form_Widget extends StatefulWidget {
-  const Form_Widget({Key? key}) : super(key: key);
+class FormWidget extends StatefulWidget {
+  const FormWidget({Key? key}) : super(key: key);
 
   @override
-  _Form_WidgetState createState() => _Form_WidgetState();
+  _FormWidgetState createState() => _FormWidgetState();
 }
 
-class _Form_WidgetState extends State<Form_Widget> {
+class _FormWidgetState extends State<FormWidget> {
+  String firstname = '';
+  String lastname = '';
+  String email = '';
+  String password = '';
   final _formKey = GlobalKey<FormState>();
-  var firstname = '';
-  var lastname = '';
-  var email = '';
-  var password = '';
 
-  void trysubmit() {
-    final isValid = _formKey.currentState!.validate();
-    FocusScope.of(context).unfocus();
-    if ((isValid)) {
+  //----------------FUNCTIONS------------------
+  trysubmit() {
+    final isvalid = _formKey.currentState!.validate();
+    if (isvalid) {
       _formKey.currentState!.save();
-      _submitAuthForm(firstname, lastname, email, password);
+      submitform();
+    } else {
+      print('Error');
     }
   }
 
-  _submitAuthForm(var firstname, var lastname, var email, var password) {
+  submitform() {
     print(firstname);
     print(lastname);
     print(email);
@@ -33,105 +35,79 @@ class _Form_WidgetState extends State<Form_Widget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.all(20),
-        child: Form(
-            key: _formKey,
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Form',
-                    style: TextStyle(fontSize: 30),
-                  ),
+        appBar: AppBar(
+          title: Text('Form'),
+        ),
+        body: Center(
+          child: Container(
+            margin: EdgeInsets.all(10),
+            child: Form(
+                key: _formKey,
+                child: Column(children: [
                   TextFormField(
+                    decoration: InputDecoration(hintText: 'Enter First Name'),
                     key: ValueKey('firstname'),
-                    decoration: InputDecoration(
-                      hintStyle: TextStyle(fontSize: 17),
-                      hintText: 'Enter First Name',
-                      suffixIcon: Icon(Icons.person, color: Colors.white),
-                      border: InputBorder.none,
-                      // contentPadding:
-                      //     EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    ),
                     validator: (value) {
                       if (value.toString().isEmpty) {
-                        return 'First Name should not be empty';
+                        return 'First Name should not be Empty';
+                      } else {
+                        return null;
                       }
-
-                      return null;
                     },
                     onSaved: (value) {
                       firstname = value.toString();
                     },
                   ),
-                  SizedBox(height: 10),
                   TextFormField(
+                    decoration: InputDecoration(hintText: 'Enter Last Name'),
                     key: ValueKey('lastname'),
-                    decoration: InputDecoration(
-                      hintStyle: TextStyle(fontSize: 17),
-                      hintText: 'Enter Last Name',
-                      suffixIcon: Icon(Icons.person, color: Colors.white),
-                      border: InputBorder.none,
-                    ),
                     validator: (value) {
                       if (value.toString().isEmpty) {
-                        return 'Last Name should not be empty';
+                        return 'Last Name should not be Empty';
+                      } else {
+                        return null;
                       }
-
-                      return null;
                     },
                     onSaved: (value) {
                       lastname = value.toString();
                     },
                   ),
-                  SizedBox(height: 10),
                   TextFormField(
+                    decoration: InputDecoration(hintText: 'Enter Email'),
                     key: ValueKey('email'),
-                    decoration: InputDecoration(
-                      hintStyle: TextStyle(fontSize: 17),
-                      hintText: 'Enter Email',
-                      suffixIcon: Icon(Icons.person, color: Colors.white),
-                      border: InputBorder.none,
-                    ),
                     validator: (value) {
-                      if (value.toString().isEmpty ||
-                          !value.toString().contains('@')) {
-                        return 'Email is invalid';
+                      if (value.toString().isEmpty) {
+                        return 'Email should not be Empty';
+                      } else {
+                        return null;
                       }
-
-                      return null;
                     },
                     onSaved: (value) {
                       email = value.toString();
                     },
                   ),
-                  SizedBox(height: 10),
                   TextFormField(
+                    obscureText: true,
+                    decoration: InputDecoration(hintText: 'Enter Password'),
                     key: ValueKey('password'),
-                    decoration: InputDecoration(
-                      hintStyle: TextStyle(fontSize: 17),
-                      hintText: 'Enter Password',
-                      suffixIcon: Icon(Icons.person, color: Colors.white),
-                      border: InputBorder.none,
-                    ),
                     validator: (value) {
-                      if (value.toString().length < 6) {
-                        return 'Password is invalid';
+                      if (value.toString().length <= 5) {
+                        return 'Minimum length of password should be 6';
+                      } else {
+                        return null;
                       }
-
-                      return null;
                     },
                     onSaved: (value) {
                       password = value.toString();
                     },
                   ),
-                  SizedBox(height: 10),
-                  ElevatedButton(
-                      onPressed: () => trysubmit(), child: Text('Submit'))
+                  TextButton(
+                      onPressed: () {
+                        trysubmit();
+                      },
+                      child: Text('Submit'))
                 ])),
-      ),
-    );
+          ),
+        ));
   }
 }
