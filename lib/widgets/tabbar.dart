@@ -1,56 +1,56 @@
 import 'package:flutter/material.dart';
 
-class Tabbar_Widget extends StatefulWidget {
-  const Tabbar_Widget({Key? key}) : super(key: key);
+class TabBarWidget extends StatelessWidget {
+  const TabBarWidget({Key? key}) : super(key: key);
 
-  @override
-  _Tabbar_WidgetState createState() => _Tabbar_WidgetState();
-}
-
-class _Tabbar_WidgetState extends State<Tabbar_Widget> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: DefaultTabController(
-      initialIndex: 0,
+    return DefaultTabController(
+      initialIndex: 2,
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          actions: [],
-          backgroundColor: Colors.green.shade900,
-          title: const Text('WhatsApp'),
-          bottom: const TabBar(
-            indicatorColor: Colors.white,
-            tabs: <Widget>[
-              Tab(
-                text: 'CHATS',
-                icon: Icon(Icons.chat),
+          backgroundColor: Colors.blue,
+          title: Text('WhatsApp'),
+          bottom:
+              TabBar(
+                
+                indicatorWeight: 10, indicatorColor: Colors.black, tabs: [
+            Tab(
+              icon: Icon(
+                Icons.chat,
               ),
-              Tab(
-                text: 'STATUS',
-                icon: Icon(Icons.person),
+              text: 'CHATS',
+            ),
+            Tab(
+              icon: Icon(
+                Icons.chat_bubble,
               ),
-              Tab(
-                text: 'CALLS',
-                icon: Icon(Icons.call),
+              text: 'STATUS',
+            ),
+            Tab(
+              icon: Icon(
+                Icons.call,
               ),
-            ],
-          ),
+              text: 'CALLS',
+            ),
+          ]),
         ),
-        body: const TabBarView(
-          children: <Widget>[
-            Center(
-              child: Text("It's cloudy here"),
-            ),
-            Center(
-              child: Text("It's rainy here"),
-            ),
-            Center(
-              child: Text("It's sunny here"),
-            ),
-          ],
-        ),
+        body: TabBarView(children: [
+          Container(
+              child: Center(
+            child: Text('CHATS', style: TextStyle(fontSize: 30)),
+          )),
+          Container(
+              child: Center(
+            child: Text('STATUS', style: TextStyle(fontSize: 30)),
+          )),
+          Container(
+              child: Center(
+            child: Text('CALLS', style: TextStyle(fontSize: 30)),
+          ))
+        ]),
       ),
-    ));
+    );
   }
 }
