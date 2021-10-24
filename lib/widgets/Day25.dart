@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:thirty_widgets/functions/databaseFunctions.dart';
+import 'package:thirty_widgets/pages/pets.dart';
 
 class DatabaseOptions extends StatefulWidget {
   const DatabaseOptions({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class _DatabaseOptionsState extends State<DatabaseOptions> {
             children: [
               ElevatedButton(
                   onPressed: () {
-                    create('pets', 'kitty', 'jerry', 'cat', 5);
+                    create('pets', 'bully', 'bully', 'bull', 10);
                   },
                   child: Text('Create')),
               ElevatedButton(
@@ -38,7 +39,12 @@ class _DatabaseOptionsState extends State<DatabaseOptions> {
                     update('pets', 'tom', 'animal', 'tiger');
                   },
                   child: Text('Update')),
-              ElevatedButton(onPressed: () {}, child: Text('Retrieve')),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => PetsList()));
+                  },
+                  child: Text('Retrieve')),
               ElevatedButton(
                   onPressed: () {
                     delete('pets', 'kitty');
